@@ -1,0 +1,12 @@
+---
+- name: 障害検知ルールブック
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        port: 5000
+  rules:
+    - name: ステータスが "down" ならPlaybookを動かす
+      condition: event.payload.status == "down"
+      action:
+        run_playbook:
+          name: playbooks/fix_service.yml
