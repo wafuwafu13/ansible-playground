@@ -8,5 +8,6 @@
     - name: ステータスが "down" ならPlaybookを動かす
       condition: event.payload.status == "down"
       action:
-        run_playbook:
-          name: playbooks/fix_service.yml
+        run_job_template:
+          name: eda
+          organization: Default
