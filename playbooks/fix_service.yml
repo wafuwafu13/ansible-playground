@@ -4,6 +4,6 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: 届いているすべての変数を表示して確認する
+    - name: 届いているすべての変数を表示して確認するyo
       debug:
         var: vars
