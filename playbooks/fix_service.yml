@@ -6,4 +6,4 @@
   tasks:
     - name: 届いているすべての変数を表示して確認する
       debug:
-        var: hostvars[inventory_hostname]
+        var: vars
