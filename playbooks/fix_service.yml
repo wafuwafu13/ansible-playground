@@ -4,10 +4,6 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: EDAから受け取った情報を表示
+    - name: 届いているすべての変数を表示して確認する
       debug:
-        msg: "アラートを検知しました。対象ホスト: {{ ansible_eda.event.payload.host }}"
-
-    - name: サービスを起動（のつもり）
-      debug:
-        msg: "{{ ansible_eda.event.payload.service }} の再起動コマンドを実行中..."
+        var: hostvars[inventory_hostname]
