@@ -1,9 +1,19 @@
 ---
 - name: サービスの復旧作業
-  hosts: localhost  # 練習用なので自分自身に実行
+  hosts: localhost
   connection: local
   gather_facts: false
   tasks:
-    - name: 届いているすべての変数を表示して確認するyo
+    - name: EDAからのアラート内容を表示
       debug:
-        var: vars
+        msg: 
+          - "--------------------------------------------------"
+          - "アラートを検知しました。"
+          - "対象ホスト: {{ ansible_eda.event.payload.host }}"
+          - "対象サービス: {{ ansible_eda.event.payload.service }}"
+          - "現在の状態: {{ ansible_eda.event.payload.status }}"
+          - "--------------------------------------------------"
+
+    - name: 復旧コマンドの実行シミュレーション
+      debug:
+        msg: "{{ ansible_eda.event.payload.host }} 上の {{ ansible_eda.event.payload.service }} を再起動しています..."
